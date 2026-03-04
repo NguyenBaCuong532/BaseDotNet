@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>SSG.SupApp.API</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>SSG.SupApp.API</PackageId>
+    <UserSecretsId>5f803735-9090-4427-8927-25185b3c25f4</UserSecretsId>
+    <Company>UniCloud</Company>    
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'SuperAppp' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>http://localhost:39</ApplicationURL>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\Version1\AgentController.cs" />
+    <Compile Remove="Controllers\Version1\BankloanController.cs" />
+    <Compile Remove="Controllers\Version1\KSHomeController.cs" />
+    <Compile Remove="Controllers\Version1\VnpayController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="appsettings.development.json" />
+    <Content Remove="appsettings.production.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Controllers\Version1\KSHomeController.cs~RF8eb8ea3.TMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.development.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="appsettings.production.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\swagger\templates\BookingHouse.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="wwwroot\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.6.0">
+    <!--<PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7">-->
+    <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
+<Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
+</PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>    
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.10" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.6.2" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LogServers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\sunshine-core\SSG.BLL\SSG.BLL.csproj" />
+    <ProjectReference Include="..\sunshine-core\sunshine-common\UNI.Model.SRE\UNI.Model.SRE.csproj" />
+  </ItemGroup>
+
+</Project>

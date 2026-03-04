@@ -1,0 +1,3 @@
+[submodule "uni-common"]
+	path = uni-common
+	url = ../../unicloud/uni-common.git

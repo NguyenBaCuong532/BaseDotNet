@@ -1,0 +1,13 @@
+/.vs/
+/obj/
+/bin/
+/Properties/
+*/bin/
+*/obj/
+*.user
+SSG.RESIDENT.API.sln
+.vscode/launch - bak.json
+.vscode/launch.json
+.vscode/tasks.json
+UNI.RESIDENT.API/Reports/~$02.ChiTietCongNoDanCu.xlsx
+/.cursor/

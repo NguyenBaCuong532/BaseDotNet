@@ -1,0 +1,225 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>UNI.Resident.API</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>SSG.Resident.API</PackageId>
+    <LangVersion>latest</LangVersion>
+    <Authors>SSG.Resident.API</Authors>
+    <Product>SSG.Resident.API</Product>
+    <Version>2.0.0</Version>
+    <UserSecretsId>6777cd42-a06f-45c5-832e-d46525ac8322</UserSecretsId>
+    <Company>UniCloud</Company>    
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <Compile Remove="Controllers\Version1\**" />
+    <Compile Remove="LogServers\**" />
+    <Compile Remove="logs\**" />
+    <Content Remove="Controllers\Version1\**" />
+    <Content Remove="LogServers\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="Controllers\Version1\**" />
+    <EmbeddedResource Remove="LogServers\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="Controllers\Version1\**" />
+    <None Remove="LogServers\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Remove="Attributes\ApiKeyMiddleware.cs" />
+    <Compile Remove="Controllers\Version2\Billing\InvoicePeriodsController.cs" />
+    <Compile Remove="Controllers\Version2\Billing\InvoicePeriodsDetailController.cs" />
+    <Compile Remove="Controllers\Version2\Billing\RevenuePeriodsController.cs" />
+    <Compile Remove="Controllers\Version2\Billing\RevenuePeriodsDetailController.cs" />
+    <Compile Remove="Controllers\Version2\CommunityController.cs" />
+    <Compile Remove="Controllers\Version2\MaterialController.cs" />
+    <Compile Remove="Controllers\Version2\Notify1Controller.cs" />
+    <Compile Remove="Controllers\Version2\Settings\SysManageController.cs" />
+    <Compile Remove="Controllers\Version2\Settings\VehicleTypeController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="appsettings.development.json" />
+    <Content Remove="appsettings.production.json" />
+    <Content Remove="wwwroot\template\Using Flexcel API.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Reports\01_TT_Phieu_thu.xlsx" />
+    <None Remove="Reports\apartment_infor_report.xlsx" />
+    <None Remove="Reports\hom_report_vehicles_added_report.xlsx" />
+    <None Remove="Reports\hom_report_vehicles_removed_report.xlsx" />
+    <None Remove="Reports\house_rented_report.xlsx" />
+    <None Remove="Reports\pending_card_apartment_report.xlsx" />
+    <None Remove="Reports\request_report.xlsx" />
+    <None Remove="Reports\s_service_report_fee.xlsx" />
+    <None Remove="Reports\vehicle_service_locked_report.xlsx" />
+    <None Remove="templates\apartment\import_apartment.xlsx" />
+    <None Remove="templates\cards\import_card.xlsx" />
+    <None Remove="templates\cards\import_vehicle_card.xlsx" />
+    <None Remove="templates\living\import_living.xlsx" />
+    <None Remove="templates\notify\import_room_notification.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\webdebloy_dev.pubxml" />
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\webdeploy_dev.pubxml" />
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\webdeploy_prod - kc.pubxml" />
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\webdeploy_uat.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Reports\01_TT_Phieu_thu.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\apartment_infor_report.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\hom_report_vehicles_added_report.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\hom_report_vehicles_removed_report.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\house_rented_report.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\pending_card_apartment_report.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\request_report.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\s_service_report_fee.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\vehicle_service_locked_report.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\apartment\import_apartment.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\cards\import_card.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\cards\import_vehicle_card.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\living\import_living.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\notify\import_room_notification.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="appsettings.development.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="appsettings.production.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\template\Using Flexcel API.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="wwwroot\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="AutoMapper" Version="12.0.1" />
+	  <PackageReference Include="Elastic.Apm.AspNetCore" Version="1.25.3" />
+	  <PackageReference Include="Elastic.Apm.Elasticsearch" Version="1.25.3" />
+	  <PackageReference Include="Elastic.Apm.SerilogEnricher" Version="8.6.1" />
+	  <PackageReference Include="Elastic.Apm.SqlClient" Version="1.23.0" />
+	  <PackageReference Include="Elastic.CommonSchema.Serilog" Version="8.6.1" />
+	  <PackageReference Include="Elastic.Serilog.Sinks" Version="8.6.1" />
+	  <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.26" />
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.26" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.26" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.26" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.26">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	  <PackageReference Include="NSwag.AspNetCore" Version="14.0.0" />
+	  <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+	  <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="web.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\assets\service-account-key-super-app-prod.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\card\card.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Version2\Employee\" />
+    <Folder Include="templates\fee\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\uni-common\UNI.Utilities.Keycloak\UNI.Utilities.Keycloak.csproj" />
+    <ProjectReference Include="..\UNI.Resident.BLL\UNI.Resident.BLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Reports\01.TongHopCongNoDanCu.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Reports\02.ChiTietCongNoDanCu.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Reports\s_service_report_fee_new.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Reports\s_service_report_fee_new_center.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Reports\s_service_report_fee_new_diamond_river.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\fee\import_Total_Amt.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\fee\mau_ton_no_cu_import.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\fee\payment_import_template.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\vehicle\import_vehicle_num.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

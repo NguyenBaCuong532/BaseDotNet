@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interfaces\App\IMarketingRepository.cs" />
+    <Compile Remove="Interfaces\Billing\IInvoicePeriodsDetailRepository.cs" />
+    <Compile Remove="Interfaces\Billing\IInvoicePeriodsRepository.cs" />
+    <Compile Remove="Interfaces\Billing\IRevenuePeriodsDetailRepository.cs" />
+    <Compile Remove="Interfaces\Billing\IRevenuePeriodsRepository.cs" />
+    <Compile Remove="Interfaces\IApiSenderRepository.cs" />
+    <Compile Remove="Interfaces\ISpayRepository.cs" />
+    <Compile Remove="Interfaces\ISysManageRepository.cs" />
+    <Compile Remove="Interfaces\Notify\INotificationRepository.cs" />
+    <Compile Remove="Repositories\ApiSenderRepository.cs" />
+    <Compile Remove="Repositories\App\MarketingRepository.cs" />
+    <Compile Remove="Repositories\Billing\InvoicePeriodsDetailRepository.cs" />
+    <Compile Remove="Repositories\Billing\InvoicePeriodsRepository.cs" />
+    <Compile Remove="Repositories\Billing\RevenuePeriodsDetailRepository.cs" />
+    <Compile Remove="Repositories\Billing\RevenuePeriodsRepository.cs" />
+    <Compile Remove="Repositories\Notify\NotificationRepository.cs" />
+    <Compile Remove="Repositories\SPayRepository.cs" />
+    <Compile Remove="Repositories\SysManageRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <PackageReference Include="Confluent.Kafka" Version="2.5.1" />
+      <PackageReference Include="FluentEmail.Mailgun" Version="2.3.1" />
+	  <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.26" />
+	  <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.26" />
+	  <PackageReference Include="Keycloak.Net.Core.v19" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UNI.Resident.Model\UNI.Resident.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\Employee\" />
+    <Folder Include="Repositories\Employee\" />
+  </ItemGroup>
+
+</Project>

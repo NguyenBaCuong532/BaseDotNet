@@ -1,0 +1,6 @@
+﻿CREATE FUNCTION fn_IsNullOrEmpty (@str NVARCHAR(1))
+RETURNS BIT
+AS
+BEGIN
+    RETURN IIF(ISNULL(@str, '') = '', 1, 0)
+END

@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE sp_res_service_vehicle_daily_page_get AS

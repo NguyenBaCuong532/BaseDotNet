@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Parking\**" />
+    <EmbeddedResource Remove="Parking\**" />
+    <None Remove="Parking\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Common\CommonPage.cs" />
+    <Compile Remove="Common\GridFilterBase.cs" />
+    <Compile Remove="Notification\AppSettings.cs" />
+    <Compile Remove="Notification\Notification.cs" />
+    <Compile Remove="Notification\NotifySentImport.cs" />
+    <Compile Remove="Notification\RoomNotifyPushImport.cs" />
+    <Compile Remove="Notification\ScheduledNotifyInfo.cs" />
+    <Compile Remove="Receipt\ReceiptPage.cs" />
+    <Compile Remove="UserConfig\coreTokenOTP.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Card\CardGuestFilter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\uni-common\UNI.Common\UNI.Common.csproj" />
+  </ItemGroup>
+
+</Project>

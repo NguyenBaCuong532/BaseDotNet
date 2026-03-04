@@ -1,0 +1,102 @@
+﻿-- =============================================
+-- Author:		<vdx>
+-- Description:	<đăng ký app mới trong tháng ,>
+-- =============================================
+
+CREATE PROCEDURE [dbo].[sp_Hom_Apartment_ELinked]
+	@userId				NVARCHAR(450),
+	@projectCd 			NVARCHAR(10),
+	@Offset				INT	= 0,
+	@PageSize			INT	= 10,
+	@Filter             NVARCHAR(100),
+	@fromDate 			NVARCHAR(50) = null, 
+	@toDate 			NVARCHAR(50) = null
+
+AS
+	BEGIN TRY
+		SET	@Offset 	= ISNULL(@Offset, 0)
+		SET	@PageSize	= ISNULL(@PageSize, 10)
+		IF	@Offset		< 0 SET @Offset	  = 0
+		IF	@PageSize	< 1 SET @PageSize = 10
+
+		DECLARE @code      	INT = 126
+		DECLARE @StartDt    DATETIME = CONVERT(DATETIME, ISNULL(@FromDate,'2000-01-01'), @code),
+				@EndDt      DATETIME = CONVERT(DATETIME, ISNULL(@ToDate,'2050-01-01'), @code),
+				@q          NVARCHAR(100) = '%' + ISNULL(@filter, '') + '%'
+
+		-- SET NOCOUNT ON added to prevent extra result sets from
+		-- interfering with SELECT statements.
+		SET NOCOUNT ON;
+
+			;WITH cols
+				AS
+				(
+					SELECT 
+							d.[ApartmentId]
+							,d.[RoomCode]
+							,c.[fullName]
+							,c.[phone]
+							,CASE c.IsSex
+								WHEN 0 THEN N'Nữ' 
+								WHEN 1 THEN N'Nam' 
+								ELSE N'Không rõ' 
+							END gender
+                            ,c.[birthday]
+							,c.CountryCd AS nation
+							,d.[FeeStart]
+							,ROW_NUMBER() OVER(ORDER BY d.[ApartmentId] DESC)  AS seq
+							,ROW_NUMBER() OVER(ORDER BY d.[ApartmentId]) 	   AS totrows
+						FROM [MAS_Apartments] d
+							INNER JOIN UserInfo m 
+								ON d.[UserLogin] = m.loginName
+							LEFT JOIN MAS_Customers c 
+								ON m.[CustId] = c.[CustId]
+						WHERE d.[isLinkApp] = 1
+							AND (@projectCd IS NULL OR d.[projectCd] = @projectCd)
+							AND (@Filter IS NULL
+								OR c.[fullName] LIKE @q
+								OR c.[Birthday] LIKE @q
+								OR d.[RoomCode] LIKE @q
+								OR c.[Phone] LIKE @q
+								OR d.[UserLogin] LIKE @q
+								OR c.CountryCd LIKE @q
+								)
+							AND (
+								EXISTS(SELECT a2.[LivingId]
+										FROM MAS_Apartment_Service_Living a2
+										WHERE a2.[ApartmentId] = d.[ApartmentId]
+											AND a2.[LivingTypeId] = 1 
+											AND a2.[MeterLastDt] BETWEEN @StartDt and @EndDt)
+								AND EXISTS(SELECT a2.[LivingId]
+											FROM MAS_Apartment_Service_Living a2
+											WHERE a2.[ApartmentId] = d.[ApartmentId]
+												AND a2.[LivingTypeId] = 2 
+												AND a2.[MeterLastDt] BETWEEN @StartDt AND @EndDt))
+				)			
+			SELECT  
+					ApartmentId
+					,RoomCode
+					,fullName
+					,phone
+					,gender
+					,birthday
+					,nation
+					,FeeStart
+					,seq, totrows
+					,totrows + seq - 1 AS TotRows
+				FROM cols
+				ORDER BY seq
+					OFFSET @Offset 
+						ROWS FETCH NEXT @PageSize ROWS ONLY 
+	END TRY
+
+	begin catch
+		declare	@ErrorNum				int = error_number(),
+				@ErrorMsg				varchar(200) = 'sp_Hom_Apartment_ELinked ' + error_message(),
+				@ErrorProc				varchar(50) = error_procedure(),
+
+				@SessionID				int,
+				@AddlInfo				varchar(max) = ' - @userId ' + @userId
+
+		exec utl_Insert_ErrorLog @ErrorNum, @ErrorMsg, @ErrorProc, 'sp_Hom_Apartment_ELinked', 'GET', @SessionID, @AddlInfo
+	end catch

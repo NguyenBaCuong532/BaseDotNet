@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[WAL_Transactions] (
+    [WalTxnId]     BIGINT           IDENTITY (1, 1) NOT NULL,
+    [fromWalletCd] NVARCHAR (20)    NULL,
+    [toWalletCd]   NVARCHAR (20)    NOT NULL,
+    [TxnDt]        DATETIME         NULL,
+    [TxnType]      INT              NULL,
+    [RefNo]        NVARCHAR (50)    NOT NULL,
+    [OrderInfo]    NVARCHAR (200)   NULL,
+    [Amount]       DECIMAL (18)     NOT NULL,
+    [FeeAmt]       DECIMAL (18)     NULL,
+    [DBCR]         BIT              NOT NULL,
+    [PosCd]        NVARCHAR (20)    NULL,
+    [BranchCd]     NVARCHAR (50)    NULL,
+    [TranferCd]    NVARCHAR (20)    NOT NULL,
+    [SourceCd]     NVARCHAR (20)    NULL,
+    [ClientId]     NVARCHAR (50)    NULL,
+    [ClientIp]     NVARCHAR (50)    NULL,
+    [Status]       INT              NULL,
+    [CurrentFrom]  DECIMAL (18)     NULL,
+    [CurrentTo]    DECIMAL (18)     NULL,
+    [OrdTxnId]     BIGINT           NULL,
+    [oid]          UNIQUEIDENTIFIER CONSTRAINT [DF_WAL_Transactions_oid] DEFAULT (newid()) NOT NULL,
+    [tenant_oid]   UNIQUEIDENTIFIER NULL,
+    CONSTRAINT [PK_WAL_Transactions] PRIMARY KEY CLUSTERED ([WalTxnId] ASC),
+    CONSTRAINT [FK_WAL_Transactions_tenant_oid] FOREIGN KEY ([tenant_oid]) REFERENCES [dbo].[MAS_Projects] ([oid])
+);
+

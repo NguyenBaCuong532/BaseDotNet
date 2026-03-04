@@ -1,0 +1,12 @@
+﻿CREATE FUNCTION [dbo].[fnCalcDistanceKM](
+    @lon1 FLOAT = 105.821235,
+    @lat1 FLOAT = 20.9829459, 
+    @lon2 FLOAT =105.802571, 
+    @lat2 FLOAT = 20.9925955
+)
+RETURNS FLOAT 
+AS
+BEGIN
+
+    RETURN ACOS(SIN(PI()*@lat1/180.0)*SIN(PI()*@lat2/180.0)+COS(PI()*@lat1/180.0)*COS(PI()*@lat2/180.0)*COS(PI()*@lon2/180.0-PI()*@lon1/180.0))*6371
+END

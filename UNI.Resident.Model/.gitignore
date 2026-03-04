@@ -1,0 +1,15 @@
+/bin/
+/obj/
+*.lock.json
+/appsettings.json
+/appsettings.development.json
+/appsettings.production.json
+*.json
+*.development.json
+*.production.json
+/.config/
+/.vs/
+/logs/
+/LogServers/
+/Properties/
+/SSG.Resident.API.csproj.user

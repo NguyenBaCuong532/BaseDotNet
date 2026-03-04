@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<Compile Remove="BusinessInterfaces\App\IMarketingService.cs" />
+	<Compile Remove="BusinessInterfaces\Billing\IInvoicePeriodsDetailService.cs" />
+	<Compile Remove="BusinessInterfaces\Billing\IInvoicePeriodsService.cs" />
+	<Compile Remove="BusinessInterfaces\Billing\IRevenuePeriodsDetailService.cs" />
+	<Compile Remove="BusinessInterfaces\Billing\IRevenuePeriodsService.cs" />
+	<Compile Remove="BusinessInterfaces\IApiSenderService.cs" />
+	<Compile Remove="BusinessInterfaces\ISPayService.cs" />
+	<Compile Remove="BusinessInterfaces\ISysManageService.cs" />
+	<Compile Remove="BusinessInterfaces\Notify\INotificationService.cs" />
+	<Compile Remove="BusinessService\ApiSenderService.cs" />
+	<Compile Remove="BusinessService\App\MarketingService.cs" />
+	<Compile Remove="BusinessService\Billing\InvoicePeriodsDetailService.cs" />
+	<Compile Remove="BusinessService\Billing\InvoicePeriodsService.cs" />
+	<Compile Remove="BusinessService\Billing\RevenuePeriodsDetailService.cs" />
+	<Compile Remove="BusinessService\Billing\RevenuePeriodsService.cs" />
+	<Compile Remove="BusinessService\HelperService\PayCallbackService.cs" />
+	<Compile Remove="BusinessService\Notify\NotificationService.cs" />
+	<Compile Remove="BusinessService\SPayService.cs" />
+	<Compile Remove="BusinessService\SysManageService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <!--<PackageReference Include="AutoMapper" Version="12.0.1" />-->
+	  <PackageReference Include="AutoMapper" Version="9.0.0" />
+	  <PackageReference Include="Minio" Version="5.0.0" />
+	  <PackageReference Include="MailKit" Version="2.15.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.1.34" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.39" />
+	  <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.26" />
+	  <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\UNI.Resident.DAL\UNI.Resident.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BusinessInterfaces\Employee\" />
+    <Folder Include="BusinessService\Employee\" />
+  </ItemGroup>
+
+</Project>

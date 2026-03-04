@@ -1,0 +1,13 @@
+/bin/
+/obj/
+*.lock.json
+/appsettings.json
+/appsettings.development.json
+/appsettings.production.json
+*.json
+*.production.json
+*.development.json
+/.config/
+/.vs/
+/logs/
+/SSG.SupApp.API.csproj.user

@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[MessageSents] (
+    [messageId]  UNIQUEIDENTIFIER CONSTRAINT [DF_MessageSents_messageId] DEFAULT (newid()) NOT NULL,
+    [phone]      NVARCHAR (15)    NOT NULL,
+    [custName]   NVARCHAR (150)   NULL,
+    [custId]     NVARCHAR (100)   NULL,
+    [contents]   NVARCHAR (400)   NOT NULL,
+    [scheduleAt] BIGINT           NULL,
+    [brandName]  NVARCHAR (20)    NULL,
+    [isSent]     BIT              NULL,
+    [sendDt]     DATETIME         NULL,
+    [sendNum]    INT              NULL,
+    [status]     BIT              NULL,
+    [sendFailed] INT              NULL,
+    [createId]   NVARCHAR (100)   NULL,
+    [createdDt]  DATETIME         NULL,
+    [clientId]   NVARCHAR (50)    NULL,
+    [clientIp]   NVARCHAR (50)    NULL,
+    [sourceId]   UNIQUEIDENTIFIER NULL,
+    [remart]     NVARCHAR (200)   NULL,
+    [partner]    NVARCHAR (10)    NULL,
+    [tenant_oid] UNIQUEIDENTIFIER NULL,
+    CONSTRAINT [PK_MessageSents] PRIMARY KEY CLUSTERED ([messageId] ASC),
+    CONSTRAINT [FK_MessageSents_tenant_oid] FOREIGN KEY ([tenant_oid]) REFERENCES [dbo].[MAS_Projects] ([oid])
+);
+
